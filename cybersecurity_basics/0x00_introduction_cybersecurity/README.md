@@ -58,6 +58,7 @@ head -c "$1"
 :Use the head command to display only the first "$1" characters of the generated random sequence
 
 ======
+
 2. Verify the integrity of a file
 
 Create a Bash script that validate the integrity of a file:
