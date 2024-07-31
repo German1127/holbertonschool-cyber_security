@@ -56,6 +56,7 @@ tr -dc '[:alnum:]'
 
 head -c "$1"
 :Use the head command to display only the first "$1" characters of the generated random sequence
+
 =====================================================================================================
 2. Verify the integrity of a file
 
