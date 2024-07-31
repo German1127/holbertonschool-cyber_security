@@ -80,4 +80,30 @@ sha256sum
 
 ======
 
+Create a Bash script that generates an RSA SSH key pair.
+
+Your key size should be 4096
+You Should Use Open-ssh
+
+#!/bin/bash
+ssh-keygen -t rsa -b 4096 -f "$1" -N ""
+
+ssh-keygen
+:It is the command that creates the SSH keys.
+
+-t rsa
+:Indicates that the RSA algorithm should be used to generate the keys.
+
+-b 4096
+:Sets the bit size of the key (in this case, 4096 bits).
+
+
+-f "$1"
+:Defines the name of the file where the private key will be saved. The value of "$1" will be replaced by the first argument provided to the script when it is run.
+
+-N ""
+:Set a password (passphrase) for the key. In this case, it is left blank so as not to have a password.
+
+======
+
 
