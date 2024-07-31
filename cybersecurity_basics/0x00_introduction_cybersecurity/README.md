@@ -21,7 +21,7 @@ lsb_release
 -s
 :Suppresses additional details and displays only the relevant information.
 
-=====================================================================================================
+======
 
 1. We always need strong Passwords
 
@@ -57,7 +57,7 @@ tr -dc '[:alnum:]'
 head -c "$1"
 :Use the head command to display only the first "$1" characters of the generated random sequence
 
-=====================================================================================================
+======
 2. Verify the integrity of a file
 
 Create a Bash script that validate the integrity of a file:
@@ -77,6 +77,6 @@ sha256sum
 
 -c tells sha256sum to check the hashes provided in the input. In this case, the entry is expected to contain a SHA-256 hash followed by a file name.
 
-=====================================================================================================
+======
 
 
