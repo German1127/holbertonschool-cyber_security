@@ -80,6 +80,7 @@ sha256sum
 
 ======
 
+3. We need an SSH key pair!
 Create a Bash script that generates an RSA SSH key pair.
 
 Your key size should be 4096
@@ -105,5 +106,41 @@ ssh-keygen
 :Set a password (passphrase) for the key. In this case, it is left blank so as not to have a password.
 
 ======
+
+4. Let's Monitor root activity
+Create a Bash script that monitors all processes started by specified user.
+
+Your script should accept user as 1st agrs.
+Your script should use grep -v to to exclude processes with VSZ and RSS values of 0
+You Should Use ps command
+
+#!/bin/bash
+ps aux | grep "$1" | grep -v "vsz" | grep -v "rss"
+
+ps aux
+:This command lists all the running processes on the system with detailed information. The parameters mean:
+
+a
+:Shows the processes of all users.
+
+u
+:Shows the processes with the user format.
+
+x
+:Includes processes that do not have a control terminal (background processes).
+
+
+|
+:It is a pipe operator used to pass the output of one command as input to the next command.
+
+grep "$1"
+:grep is a search tool that searches for a text pattern in input. Here, "$1" is a variable that represents the first argument passed to the script or command. grep "$1" will find all lines in the output of the ps aux command that contain the text specified by the first argument.
+
+
+grep -v "vsz"
+:The second grep filters out lines containing the word "vsz". The -v option indicates that grep should exclude lines that match the pattern, rather than include them.
+
+grep -v "rss"
+:Similar to the previous one, this grep excludes lines containing the word "rss".
 
 
