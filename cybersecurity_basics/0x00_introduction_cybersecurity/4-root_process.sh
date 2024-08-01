@@ -1,3 +1,2 @@
 #!/bin/bash
-User="$1"
-ps aux | grep User | grep -v "vsz" | grep -v "rss"
+ps aux | grep "$1" | grep -v "vsz" | grep -v "rss"
