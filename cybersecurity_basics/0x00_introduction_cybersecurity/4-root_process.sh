@@ -1,2 +1,2 @@
 #!/bin/bash
-ps -u "$1" | grep -v "0"
+echo "$1" | ps -u "$1" | grep -vE "VSZ|RSS\s+0"
