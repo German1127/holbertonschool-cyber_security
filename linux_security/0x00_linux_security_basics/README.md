@@ -97,3 +97,48 @@ iptables
 
 ======
 
+4. See what's talking, and who's listening!
+Write a bash script that list services, their current state, and their corresponding ports.
+
+1 You should run your code as privileged user. root or sudoers.
+2 You should show the PID and name of the program to which each socket belongs.
+3 You should show numerical addresses (IP addresses and port numbers).
+4 You should display listening sockets.
+5 You should display TCP sockets.
+6 You should display UDP sockets.
+
+#!/bin/bash
+sudo netstat -tuln | ps aux
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+sudo netstat -tuln
+:Here the netstat command is used with sudo to run the command with superuser privileges. netstat is a tool that displays network connections, routing tables and interface statistics. The parameters used are:
+
+-t
+:Show TCP connections.
+
+-u
+:Show UDP connections.
+
+-l
+:Show only sockets that are listening.
+
+-n
+:Display addresses and port numbers in numeric format, rather than resolving to host or service names.
+
+| ps aux
+:The symbol | is a pipe that passes the output of the netstat command as input to the ps aux command. ps aux is a command that displays a list of all running processes on the system. The parameters used are:
+
+a
+:Shows the processes of all users.
+
+u
+:Shows the name of the user who executes the process.
+
+x
+:Shows processes that are not associated with a terminal.
+
+======
+
