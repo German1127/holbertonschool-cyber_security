@@ -49,3 +49,25 @@ ss
 
 ======
 
+2. Firewall rules: Your network's first line of defense!
+Write a bash script that allow only incoming connections with the TCP protocol through port 80.
+You should run your code as privileged user. root or sudoers
+
+#!/bin/bash
+sudo ufw allow 80/tcp
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+ufw
+:ufw stands for "Uncomplicated Firewall." It is a tool to manage firewall rules on Ubuntu-based systems and other Linux distributions.
+
+
+allow
+:It is an option of the ufw command that allows traffic through a specific port.
+
+80/tcp
+:Specifies the port and protocol to be allowed. Port 80 is used for HTTP traffic, and tcp indicates that it is the TCP communication protocol.
+
+======
+
