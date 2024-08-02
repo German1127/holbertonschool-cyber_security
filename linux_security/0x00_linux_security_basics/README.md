@@ -71,3 +71,29 @@ allow
 
 ======
 
+3. Securing your network, one rule at a time!
+Write a bash script that list all the rules in the security table of the firewall.
+You should run your code as privileged user. root or sudoers.
+You should use the verbose mode.
+
+#!/bin/bash
+sudo iptables -L -v -n
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+iptables
+:It is a command line utility that allows you to configure the Linux system firewall. Manages packet filtering rules in the kernel.
+
+-L
+:Display the list of all rules in the iptables filter table.
+
+-v
+:Display detailed information about each rule, including packet and byte counters.
+
+
+-n
+:Display IP addresses and ports in numeric format instead of resolving host and service names. This speeds up the process and avoids potential delays in name resolution.
+
+======
+
