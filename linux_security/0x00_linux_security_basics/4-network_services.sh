@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nestat -tuln | ps aux
+sudo netstat -tuln | ps aux
