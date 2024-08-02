@@ -142,3 +142,21 @@ x
 
 ======
 
+5. Where it talks, we all listen!
+Write a bash script that initiate a system audit for scanning the machine.
+You should run your code as privileged user. `root` or `sudoers`.
+
+///INSTAL LYNIS///
+
+#!/bin/bash
+sudo lynis audit system
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+
+lynis audit system
+:This is the command that runs the Lynis tool with the audit system parameter. Lynis is a security auditing tool for Unix-based operating systems, such as Linux. The audit system command performs a complete audit of the system, verifying configurations, possible vulnerabilities, and other security aspects
+
+======
+
