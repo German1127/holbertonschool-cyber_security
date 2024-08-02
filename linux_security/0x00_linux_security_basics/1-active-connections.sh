@@ -1,1 +1,1 @@
-sudo ss -tap
+sudo ss -t -a -p
