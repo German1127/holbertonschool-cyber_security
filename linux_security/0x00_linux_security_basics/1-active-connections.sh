@@ -1,1 +1,1 @@
-sudo ss -antp
+sudo ss -atp
