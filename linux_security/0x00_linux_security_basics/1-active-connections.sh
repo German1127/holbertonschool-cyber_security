@@ -1,1 +1,1 @@
-sudo ss  -t -a -p
+sudo netstat -t -a -p
