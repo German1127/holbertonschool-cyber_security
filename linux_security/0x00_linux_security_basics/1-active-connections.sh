@@ -1,1 +1,1 @@
-sudo netstat -ant
+sudo ss -antp
