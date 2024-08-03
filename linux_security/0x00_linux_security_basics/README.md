@@ -188,3 +188,21 @@ tcpdump
 
 ======
 
+7. So fast, it'll make your router sweat!
+Write a bash script that scan a subnetwork to discover live host using scan.
+You should run your code as privileged user root or sudoers.
+Your script should accept a subnetwork as an arguments $1.
+
+///INSTALL nmap///
+
+#!/bin/bash
+sudo nmap "$1"
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+
+nmap
+:is a networking tool used to scan and discover hosts and services on a network. It is commonly used for security audits and network mapping.
+
+"$1": This represents the first argument passed to the script when it is executed
