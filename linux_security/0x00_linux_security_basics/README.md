@@ -160,3 +160,31 @@ lynis audit system
 
 ======
 
+6. Your eyes and ears on the network!
+Write a bash script that capture and analyze network traffic going through the system.
+You should run your code as privileged user. root or sudoers.
+You should limit the number of packets captured to 5
+
+/// USE tcpdump -D FOR LIST///
+
+#!/bin/bash
+sudo tcpdump -i eth0 -c 5 -v
+
+sudo
+:This command is used to run the following command with root privileges. This is necessary because some network-related operations require elevated permissions.
+
+tcpdump
+:It is a command line tool for capturing and analyzing network packets on a system. Allows you to view network traffic passing through a specific interface.
+
+-i eth0
+:Especifica la interfaz de red a monitorear. En este caso, eth0 es el nombre de la interfaz de red. Esto podría variar dependiendo de la configuración del sistema; por ejemplo, puede ser eth1, wlan0, etc.
+
+
+-c 5
+:Defines the number of packets that must be captured before tcpdump stops. In this case, tcpdump will capture 5 packets and then stop automatically.
+
+-v
+:Es un nivel de verbose (detalle). -v incrementa la cantidad de información que tcpdump muestra sobre cada paquete. Puedes usar -vv o -vvv para más detalles.
+
+======
+
