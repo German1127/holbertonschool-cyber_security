@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo whois "$1" | awk /Registrant/ || /Admin/ || /Tech/ {print $1", " $2} > whois.csv
+whois "$1" | awk -F': ' /Registrant/ || /Admin/ || /Tech/ {print $1", " $2} > whois.csv
