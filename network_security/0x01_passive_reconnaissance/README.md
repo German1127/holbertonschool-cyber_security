@@ -55,3 +55,49 @@ Refers to the first argument passed to the script. In this case, the user is exp
 
 ======
 
+2. MX Record
+Write a bash script that retrieve the MX record of a specified domain using nslookup command:
+
+#!/bin/bash
+sudo nslookup -query=MX "$1"
+
+
+nslookup -query=MX:
+This is the main command that performs the DNS query. nslookup is a tool for looking up DNS servers. The -query=MX option specifies that you want to query MX records, which indicate the email servers responsible for receiving mail for the specified domain.
+
+======
+
+3. Check the TXT
+Write a bash script that retrieve the TXT record of a specified domain using nslookup command:
+
+#!/bin/bash
+sudo nslookup -query=TXT "$1"
+
+
+nslookup -query=TXT "$1":
+nslookup is a command line tool used to query domain name servers (DNS).
+-query=TXT specifies that we want to query TXT records, which are a type of DNS record used to store arbitrary text.
+
+======
+
+4. Dig it all !
+Write a bash script that retrieve All record of a specified domain using dig command:
+Your output should contains answers only, noall
+
+#!/bin/bash
+sudo dig +noall +answer ANY "$1"
+
+dig:
+It is a command line tool used to perform DNS queries. It can be used to query records of different types, such as A, MX, TXT, etc.
+
++noall:
+This is a dig option that suppresses all output except the response.
+
++answer:
+Along with +noall, this option displays only the answers section of the DNS query.
+
+ANY:
+Specifies the type of DNS record to consult. ANY returns all records available for a domain.
+
+======
+
