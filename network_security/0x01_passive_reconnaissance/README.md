@@ -101,3 +101,32 @@ Specifies the type of DNS record to consult. ANY returns all records available f
 
 ======
 
+5. Find the sub !
+Write a bash script that fetch subdomains of given domain using subfinder command:
+
+Show only subdomains in output
+Write output in Host,IP format
+File to write output to <domain>.txt
+
+//INSTALL subfinder//
+
+#!/bin/bash
+sudo subfinder -silent -d "$1" -o $1.txt -nW -oI
+
+subfinder:
+It is a tool to discover subdomains.
+
+-silent:
+Run subfinder in silent mode, suppressing standard output.
+
+-o $1.txt:
+Save the output to a file with the domain name.
+
+-nW:
+Avoid recursive DNS queries, improving speed.
+
+-oI:
+Save only the identified subdomains in the output file.
+
+======
+
