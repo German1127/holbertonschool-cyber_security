@@ -130,3 +130,50 @@ Save only the identified subdomains in the output file.
 
 ======
 
+7. Catch The flag - TXT
+
+Here we come to our first CTF within this module. \o/
+
+For this challenge we are expecting you to:
+
+Target Domain passive.hbtn
+Connect to the VPN server
+Get a Target Machine
+Use this <target IP> as a dns resolver within dig command
+
+dig @<target IP> passive.hbtn
+Hints
+
+The flag is hidden within TXT record
+
+======
+
+8. Catch The flag - NS
+
+For this challenge we are expecting you to:
+
+Target Domain passive.hbtn
+Connect to the VPN server
+Get a cyber_netsec_0x01 Target Machine
+Use this <target IP> as a dns resolver within dig command
+
+dig @<target IP> passive.hbtn
+
+The flag is hidden within TXT record
+
+Try to search within nameserver domains
+
+======
+
+9. Catch the flag - MX
+
+For this challenge we are expecting you to:
+
+Target Domain passive.hbtn
+Connect to the VPN server
+Get a cyber_netsec_0x01 Target Machine
+Use this <target IP> as a dns resolver within dig command
+dig @<target IP> passive.hbtn
+
+The flag is hidden within TXT record
+Try to search within mail server domains
