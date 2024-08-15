@@ -154,3 +154,39 @@ You need to use gobuster with dir option
 App
 Endpoint: http://active.hbtn
 
+//install gobuster//
+
+sudo gobuster dir -u http://10.42.168.157 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -b 302 -o pruebagobuster.txt 
+
+sudo: 
+Run the command with superuser privileges.
+
+gobuster dir: 
+Indicates that Gobuster should perform a directory search.
+
+-u http://10.42.168.157:
+Specifies the URL of the target server.
+
+-w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:
+Defines the path of the wordlist file that Gobuster will use for searching. This file contains a list of common file and directory names.
+
+-b 302:
+Exclude HTTP responses with status code 302 (redirect).
+
+-o testgobuster.txt: 
+Save the search results to a file called testgobuster.txt.
+
+======
+
+7. It may look the same, but it’s not
+
+For this challenge we need you to:
+
+Search for the third flag.
+echo "<FLAG_3>" > 102-flag.txt
+Hints
+
+Flag is exposed clearly in active.hbtn at Admin panel
+App
+Endpoint: http://active.hbtn
+
