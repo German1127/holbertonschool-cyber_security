@@ -107,3 +107,50 @@ Indicates that sqlmap should list the databases available on the target database
 
 ======
 
+5. Injections hurt :')
+For this challenge we need you to:
+
+Search for the second flag.
+echo "<FLAG_2>" > 101-flag.txt
+
+-D <database_name> --dump to dump the database.
+Check for the Users table
+Flag is exposed clearly in active.hbtn
+App
+Endpoint: http://active.hbtn
+
+sudo sqlmap "http://active.hbtn/product/" -D active.hbtn --dump
+
+
+sudo: 
+Run the command with superuser privileges. This is useful if sqlmap requires elevated permissions to access certain resources or files.
+
+sqlmap:
+It is the tool used to detect and exploit SQL injection vulnerabilities.
+
+"http://active.hbtn/product/": 
+This is the URL of the website you are attacking. The goal here is to identify if the URL parameter is vulnerable to SQL injection.
+
+-D active.hbtn: 
+This argument indicates that you want to focus on the database called active.hbtn. Here you are specifying that sqlmap should interact with this particular database.
+
+--dump: 
+This parameter tells sqlmap to dump the entire contents of the selected database. This means that sqlmap will attempt to extract all tables and their data within the active.hbtn database.
+
+======
+
+6. My NAV doesn't include all my pages
+
+Directory Enumeration
+For this task we need you to:
+
+Find the admin panel login page.
+echo "/<pathname>" > 5-hidden_dir.txt
+Hints
+
+You need to use gobuster with dir option
+-b 302 to ignore 302 status code.
+-w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt for the wordlist
+App
+Endpoint: http://active.hbtn
+
