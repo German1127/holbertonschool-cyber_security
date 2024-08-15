@@ -20,6 +20,8 @@ Inspect the website!
 For this task we need you to:
 
 Edit /etc/hosts to point active.hbtn domain name to the Target IP.
+
+Add host:
 sudo bash -c 'echo "<target_ip>    active.hbtn" >> /etc/hosts'
 
 Inspect the found website.
