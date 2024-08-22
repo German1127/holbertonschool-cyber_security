@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nmap -sn --script icmp-timestamp $1
+sudo nmap -sn -PP $1
