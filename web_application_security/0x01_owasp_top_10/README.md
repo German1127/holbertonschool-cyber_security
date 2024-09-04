@@ -28,5 +28,16 @@ hints:
 Think about the headers of all Fetch/XHR made requests.
 Use the previous task to decrypt the password.
 
+R:
+F12.
+Inspect the "Network".
+Search Fetch/XHR requests.
+Authorization header. This header contains a token in bearer format, which appears to be an encoded JSON object.
+
+you use the terminal in linux:
+echo 'eyd1c2VybmFtZSc6ICd5b3NyaScsICdwYXNzd29yZF9oYXNoJzogJ0R6NThMeFZ2S0hJb0pTWWRPQkFxT0FZV05oTVFjaWdwS0E9PSd9' | base64 -d
+
+Doing this returns the name and the encrypted pass, which is decoded with the script made in task 1 and gives the pass
+
 ======
 
