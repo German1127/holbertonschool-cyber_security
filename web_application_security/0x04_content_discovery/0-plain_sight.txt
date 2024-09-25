@@ -1,0 +1,2 @@
+/hidden-directory, wp-upload.php, wordpress
+
