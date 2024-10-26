@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nslookup -type=TXT "$1"
+sudo nslookup -q=TXT "$1"
