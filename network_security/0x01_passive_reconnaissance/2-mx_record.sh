@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nslookup -query=MX "$1"
+nslookup -type=mx $1
