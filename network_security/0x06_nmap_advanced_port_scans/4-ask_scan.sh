@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nmap -sA "$1" -p "$2"
+sudo nmap -sA -reason "$1" -p "$2"
