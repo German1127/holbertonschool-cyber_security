@@ -58,3 +58,6 @@ As usual the objective is to capture the flag however this time the flag would b
 
 Target Machine: Cyber - WebSec 0x07
 Main Endpoint: http://web0x07.hbtn/find_your_shell/
+Useful instructions:
+1. Investigate what files you have permission to access.
+2. Check paths under root 
