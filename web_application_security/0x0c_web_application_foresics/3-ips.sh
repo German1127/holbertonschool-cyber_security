@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -oP "Failed password.*from \K\S+" auth.log | sort -u | wc -l
+awk '/Failed password/ {print $(NF-3)}' auth.log | sort -u | wc -l
