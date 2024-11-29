@@ -33,7 +33,7 @@ def modify_heap_memory(pid, target_string, new_string):
                 if "[heap]" in line:
                     heap_info = line.strip()
                     break
-            
+
             if not heap_info:
                 print("Error: Heap section not found.")
                 return
