@@ -1,4 +1,5 @@
-**0. Hello World with Function**  Write a Ruby script that prints “Hello, Holberton! from Ruby!” using a function that accepts one argument String and print Hello, Holberton! from <str>.
+<strong>0. Hello World with Function</strong><br>
+Write a Ruby script that prints “Hello, Holberton! from Ruby!” using a function that accepts one argument String and print Hello, Holberton! from <str>.
 
     Function prototype: say_hello(str)
 
