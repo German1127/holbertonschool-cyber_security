@@ -310,17 +310,15 @@ File downloaded and saved to ./ruby6530.jpg.
 
 <strong>10. Password Cracker</strong><br>
 Write a Ruby script that accepting two args hashed_password dictionary_file to perform a dictionary attack to crack a hashed password.
-Word 1 	SHA-256 Hash 2
-password 	5e884898da28047151d0e56f8dc6292773603d0d6aabbddf554a4febe4e60ab3
-——– 	——–
-123456 	8d969eef6ecad3c29a3a629280e686cff8fabd2dfd771eebc9bc1696ec3e9d39
-——– 	——–
-qwerty 	d8578edf8458ce06fbc5bb76a58c5ca4a0a8cdd3d44f1e01c8a160d7038b1a5c
-——– 	——–
-admin 	8c6976e5b5410415bde908bd4dee15dfb16a4d96a35b7c4d465f9c74879ab0d4
-——– 	——–
-welcome 	25f9e794323b453885f5181f1b624d0b004d6e1d78d9e8a74b1e21610029a450
-——– 	——–
+
+| Word       | SHA-256 Hash                                                                 |
+|------------|-------------------------------------------------------------------------------|
+| password   | 5e884898da28047151d0e56f8dc6292773603d0d6aabbddf554a4febe4e60ab3           |
+| 123456     | 8d969eef6ecad3c29a3a629280e686cff8fabd2dfd771eebc9bc1696ec3e9d39           |
+| qwerty     | d8578edf8458ce06fbc5bb76a58c5ca4a0a8cdd3d44f1e01c8a160d7038b1a5c           |
+| admin      | 8c6976e5b5410415bde908bd4dee15dfb16a4d96a35b7c4d465f9c74879ab0d4           |
+| welcome    | 25f9e794323b453885f5181f1b624d0b004d6e1d78d9e8a74b1e21610029a450           |
+
 
 ```shell
 ┌──(imen㉿hbtn-lab)-[…/scripting_cyber/0x00-ruby_scripting]
