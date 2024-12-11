@@ -3,7 +3,7 @@ Write a Ruby script that prints “Hello, Holberton! from Ruby!” using a funct
 
     Function prototype: say_hello(str)
 
-```bash
+```shell
 ┌──(imen㉿hbtn-lab)-[…/scripting_cyber/0x00-ruby_scripting]
 └─$ cat 0-main.rb 
 require_relative '0-hello_world_function'
@@ -11,7 +11,7 @@ require_relative '0-hello_world_function'
 say_hello("Ruby!")
 ```
 
-```bash
+```shell
 ┌──(imen㉿hbtn-lab)-[…/scripting_cyber/0x00-ruby_scripting]
 └─$ ruby 0-main.rb 
 Hello, Holberton! from Ruby!
