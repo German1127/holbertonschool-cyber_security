@@ -1,1 +1,1 @@
-CTF{nice_shell_escape : 0fcfabd675e2ae5bc30796cd09746c25}
+0fcfabd675e2ae5bc30796cd09746c25
