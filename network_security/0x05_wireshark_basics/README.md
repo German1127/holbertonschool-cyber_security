@@ -1,141 +1,154 @@
-0. IP protocol scan
+![image](images/1.png)
+
+#  0. IP protocol scan 
+
 Create a Wireshark filter to detect packets sent by the nmap -sO <target> command for IP protocol scanning.
 
-ip.proto == 1
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+    370 11.616723413   172.22.101.90         216.58.205.206        ICMP     34     
 
-ip:
-This refers to the IP (Internet Protocol) protocol. It is a general category in Wireshark that is used to filter IP-related packets.
+Frame 370: 34 bytes on wire (272 bits), 34 bytes captured (272 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 216.58.205.206
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-proto:
-It is an abbreviation of "protocol" (protocol). Within the context of the IP filter, proto indicates the field that specifies the protocol that is encapsulated in the IP packet.
+#  1. TCP SYN scan 
 
-==:
-This is the comparison operator in Wireshark. Used to check if the value of a field is equal to the specified value.
-
-1:
-This is the number that represents the ICMP protocol in the proto field of the IP header. Each protocol at the network layer is assigned a number, and 1 is the number for ICMP.
-
-======
-
-1. TCP SYN scan
 Create a Wireshark filter to detect packets sent by the nmap -sS <target> command for TCP SYN scan.
 
-tcp.flags.syn == 1 and ip.dst == 10.42.68.80  and tcp.window_size <= 1024 andtcp.flags.ack == 0 
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+     86 6.873523942    172.22.101.90         172.217.17.110        TCP      58 60792 → 3306 [SYN] Seq=0 Win=1024 Len=0 MSS=1460
 
-tcp.flags.syn == 1:
-This filter selects TCP packets where the SYN (synchronize) bit is set. The SYN bit is used to start a TCP connection, so this filter selects starting packets from a TCP connection.
+Frame 86: 58 bytes on wire (464 bits), 58 bytes captured (464 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 172.217.17.110
+Transmission Control Protocol, Src Port: 34124, Dst Port: 443, Seq: 0, Len: 0
+```
+Hint: run the nmap command and try to capture your own packet . Hint: check the window_size .
+---
 
-ip.dst == 10.42.68.80:
-This filter selects IP packets whose destination is the IP address 10.42.68.80. Limits the search to packages that are sent to that specific address.
+#  2. TCP Connect() scan 
 
-tcp.window_size <= 1024:
-This filter selects TCP packets in which the TCP window size is less than or equal to 1024 bytes. The TCP window size indicates the amount of data the receiver is willing to accept before an acknowledgment is required.
-
-tcp.flags.ack == 0:
-This filter selects TCP packets where the ACK (acknowledgment) bit is disabled. The ACK bit is used to acknowledge receipt of data on a TCP connection, so this filter selects packets that are not acknowledging receipt of data.
-
-======
-
-2. TCP Connect() scan
 Create a Wireshark filter to detect packets sent by the nmap -sT <target> command for TCP Connect() scan.
 
-tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.window_size > 1024
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+     27 1.540073953    172.22.101.90         142.250.200.206       TCP      74     58264 → 21 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=737940926 TSecr=0 WS=128
 
-tcp.flags.syn == 1:
-This filter selects TCP packets in which the SYN (synchronize) bit is set. The SYN bit is used to initiate a TCP connection, so this filter looks for packets that are trying to establish a new connection.
+Frame 27: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 142.250.200.206
+Transmission Control Protocol, Src Port: 58264, Dst Port: 21, Seq: 0, Len: 0
+```
+Hint: run the nmap command and try to capture your own packet . Hint: check the window_size .
+---
 
-tcp.flags.ack == 0:
-This filter selects TCP packets in which the ACK (acknowledgment) bit is disabled. The ACK bit is used to confirm receipt of data on a TCP connection, so this filter looks for packets that are not acknowledging receipt of data.
+#  3. TCP FIN scan 
 
-tcp.window_size > 1024:
-This filter selects TCP packets in which the TCP window size is greater than 1024 bytes. The TCP window size indicates how much data the receiver is willing to accept before needing an acknowledgment.
-
-======
-
-3. TCP FIN scan
 Create a Wireshark filter to detect packets sent by the nmap -sF <target> command for TCP FIN scan .
 
-tcp.flags.fin == 1 and tcp.flags.ack == 0 and tcp.flags.syn == 0 and tcp.flags == 0x001
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+    182 12.253459933   172.22.101.90         172.217.17.110        TCP  54  51895 → 53 [FIN] Seq=1 Win=1024 Len=0
 
-tcp.flags.fin == 1:
-This filter selects TCP packets in which the FIN bit is set. The FIN bit is used to terminate a TCP connection.
+Frame 182: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 172.217.17.110
+Transmission Control Protocol, Src Port: 34380, Dst Port: 23, Seq: 1, Len: 0
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-tcp.flags.ack == 0:
-This filter selects TCP packets in which the ACK (acknowledgment) bit is set to off. The ACK bit is used to confirm receipt of data, so this filter selects packets that are not acknowledging receipt of data.
-
-tcp.flags.syn == 0:
-This filter selects TCP packets in which the SYN (synchronize) bit is disabled. The SYN bit is used to start a TCP connection, so this filter excludes packets that are trying to start a new connection.
-
-tcp.flags == 0x001:
-This filter selects TCP packets whose flags field is set to exactly 0x001 in hexadecimal notation. In binary, this corresponds to 0000 0001, meaning that only the FIN bit is set. This is a direct way to search for packets where the only flag set is FIN.
-
-======
-
-4. TCP ping sweeps
+#  4. TCP ping sweeps 
 Create a Wireshark filter to detect packets sent by the nmap -sn -PS/-PA <subnet> command for TCP SYN Ping/TCP ACK Ping .
 
-(tcp.flags.syn == 1 and tcp.flags.ack == 0) or (tcp.flags.ack == 1 and tcp.flags.syn == 0)
+- Your Filter string should be able to capture packets similar to this:
+```
+No.   Time              Source          Destination     Protocol  Length  Info
+1     0.000000          192.168.1.100   203.0.113.5     TCP       74      56789 > 80 [SYN] Seq=0 Win=8192 Len=0
+2     0.001000          203.0.113.5     192.168.1.100   TCP       74      80 > 56789 [SYN, ACK] Seq=0 Ack=1 Win=5840 Len=0
+3     0.002000          192.168.1.100   203.0.113.5     TCP       74      56789 > 80 [ACK] Seq=1 Ack=1 Win=17520 Len=0
 
-tcp.flags.syn == 1:
-This filter selects TCP packets where the SYN (synchronize) bit is set. This bit is used to start a new TCP connection.
 
-tcp.flags.ack == 0:
-This filter selects TCP packets where the ACK (acknowledgment) bit is disabled. The ACK bit is used to confirm receipt of data.
+Frame 17: 58 bytes on wire (464 bits), 58 bytes captured (464 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 142.250.200.206
+Transmission Control Protocol, Src Port: 44255, Dst Port: 80, Seq: 0, Len: 0
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-======
+#  5. UDP port scan 
 
-5. UDP port scan
 Create a Wireshark filter to detect packets sent by the nmap -sU <target> command for UDP port scan .
 
-icmp.type == 3 and icmp.code == 3
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+   1340 4.982253065    142.250.200.206       172.22.101.90         ICMP     70     Destination unreachable (Port unreachable)
 
-icmp.type == 3:
+Frame 1340: 70 bytes on wire (560 bits), 70 bytes captured (560 bits) on interface wlo1, id 0
+Ethernet II, Src: d4:76:a0:53:43:94 (d4:76:a0:53:43:94), Dst: b4:0e:de:92:17:97 (b4:0e:de:92:17:97)
+Internet Protocol Version 4, Src: 142.250.200.206, Dst: 172.22.101.90
+Internet Control Message Protocol
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-icmp.type == 3:
+#  6. UDP ping sweeps 
 
-ICMP Type 3:
-This filter selects ICMP packets whose type is 3. In the ICMP protocol, type 3 indicates a Destination Unreachable message. This means that the IP packet could not be delivered to the destination.
-icmp.code == 3:
-
-ICMP Code 3:
-Within type 3, code 3 specifies Port Unreachable. This indicates that the port to which the packet was attempted to be sent at the destination is not available. It is a common response when the destination is available, but the specific port is not listening.
-
-======
-
-6. UDP ping sweeps
 Create a Wireshark filter to detect packets sent by the nmap -sn -PU <subnet> command for UDP ping sweeps .
 
-udp.dstport == 7
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+     92 6.850769581    172.22.101.90         142.250.200.206       UDP      42     59791 → 40125 Len=0
 
-udp.dstport == 7:
-in Wireshark is used to select and display UDP (User Datagram Protocol) packets whose destination port is 7.
+Frame 92: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 142.250.200.206
+User Datagram Protocol, Src Port: 59791, Dst Port: 40125
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-======
+#  7. ICMP ping sweep 
 
-7. ICMP ping sweep
 Create a Wireshark filter to detect packets sent by the nmap -sn -PE <subnet> command for ICMP ping sweeps .
 
-icmp.type == 8 or icmp.type == 0
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+     29 1.667485121    172.22.101.90         142.250.1.0           ICMP     42     Echo (ping) request  id=0x1d0b, seq=0/0, ttl=54 (no response found!)
 
-icmp.type == 8:
+Frame 29: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface wlo1, id 0
+Ethernet II, Src: b4:0e:de:92:17:97 (b4:0e:de:92:17:97), Dst: d4:76:a0:53:43:94 (d4:76:a0:53:43:94)
+Internet Protocol Version 4, Src: 172.22.101.90, Dst: 142.250.1.0
+Internet Control Message Protocol
+```
+Hint: run the nmap command and try to capture your own packet .
+---
 
-ICMP Type 8:
-Selects ICMP packets where the type is 8. This type corresponds to Echo Request. It is a message sent to request an echo response, commonly used by the ping command to verify network connectivity.
-icmp.type == 0:
+#  8. ARP scanning 
 
-ICMP Type 0:
-Selects ICMP packets where the type is 0. This type corresponds to Echo Reply. It is the response to the Echo Request message, indicating that the destination host received the message and is responding.
-
-======
-
-8. ARP scanning
 Create a Wireshark filter to detect packets sent by the arp-scan -l command for ARP scanning .
 
-arp:
-Refers to the ARP protocol, which is used to map IP addresses to MAC addresses on a local network.
+- Your Filter string should be able to capture packets similar to this:
+```
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    d4:76:a0:53:43:94     Broadcast             ARP      60     Who has 172.22.101.231? Tell 172.22.101.254
 
-dst.hw_mac:
-This is an abbreviation for "destination hardware MAC address". In ARP, this is the MAC address to which the ARP packet is directed.
+Frame 1: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface wlo1, id 0
+Ethernet II, Src: d4:76:a0:53:43:94 (d4:76:a0:53:43:94), Dst: Broadcast (ff:ff:ff:ff:ff:ff)
+Address Resolution Protocol (request)
+```
+Hint: run the arp command and try to capture your own packet .
 
-== 00:00:00:00:00:00:
-This is the value being searched for in the destination MAC address field. 00:00:00:00:00:00 is a MAC address that, in most cases, is used to represent an unassigned MAC address or a "broadcast" MAC address when information is being requested.
