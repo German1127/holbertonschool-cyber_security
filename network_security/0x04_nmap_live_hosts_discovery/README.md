@@ -1,140 +1,162 @@
-0. Will arp be enough ?
+![image](images/1.png)
+
+#  0. Will arp be enough ? 
 
 Write a bash script that scan a subnetwork to discover live host using ARP scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
+
 Depending on the scanned subnetwork, the output could change.
 We can’t expect to learn about the Target MAC Address, unless we are in the the same subnetwork.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./0-arp_scan.sh 192.168.65.0/24
+[sudo] password for yosri:
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-22 05:02 CDT
+Nmap scan report for 192.168.65.1
+Host is up (0.00064s latency).
+MAC Address: C6:91:0C:4B:4E:64 (Unknown)
+Nmap scan report for 192.168.65.2
+Host is up.
+Nmap done: 256 IP addresses (2 hosts up) scanned in 2.03 seconds
+```
 
-#!/bin/bash
-sudo nmap -sn -PR $1
+---
 
+#  1. Host, do you hear me ? 
 
-#!/bin/bash:
-This line tells the operating system that the following script should be executed using the Bash shell. Bash is a very popular shell on Unix-like systems like Linux and macOS.
-
-sudo:
-This keyword grants the script superuser (root) privileges. This is necessary because the nmap tool often requires access to ports and networks that are restricted to normal users.
-
-nmap:
-Nmap is a widely used networking tool for discovering hosts and services on a network. It is like a network radar, capable of scanning ports, detecting operating systems and applications, and much more.
-
--sn:
-This option tells nmap to perform a network scan without opening any connections. This is faster and less intrusive than a full port scan.
-
--PR:
-This option tells nmap to send ICMP ECHO REQUEST (ping) and ARP REQUEST packets to discover hosts on the network.
-
-
-$1:
-$1 is the first argument passed to the script when it runs. In this case, it is expected to be an IP address or a range of IP addresses.
-
-=======
-
-1. Host, do you hear me ?
 Write a bash script that scan a subnetwork to discover live host using ICMP Echo scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
+
 Depending on the scanned subnetwork, the output could change.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./1-icmp_echo_scan.sh 6.19.100.0/24
+[sudo] password for yosri:
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-21 14:02 CDT
+Nmap scan report for 6.19.100.2
+Host is up (0.14s latency).
+Nmap done: 256 IP addresses (1 host up) scanned in 19.03 seconds
+```
+---
 
-#!/bin/bash
-sudo nmap -sn -PE $1
+#  2. Time always matter 
 
--PE:
-This option tells Nmap to send ICMP ECHO REQUEST (ping) packets and ARP packets to discover hosts on the network. ICMP packets are commonly used to verify connectivity between two devices on an IP network, while ARP packets are used to map IP addresses to MAC addresses on a local network.
-
-======
-
-2. Time always matter
 Write a bash script that scan a subnetwork to discover live host using ICMP Timestamp scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
+
 Depending on the scanned subnetwork, the output could change.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./2-icmp_timestamp_scan.sh 6.19.100.0/24
+[sudo] password for yosri:
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-21 14:17 CDT
+Nmap scan report for 6.19.100.2
+Host is up (0.16s latency).
+Nmap done: 256 IP addresses (1 host up) scanned in 19.93 seconds
+```
+---
 
-#!/bin/bash
-sudo nmap -sn -PP $1
+#  3. Sometimes we need Masks ! 
 
--PP:
-This option tells Nmap to send ICMP ECHO REQUEST (ping) packets and TCP SYN packets (without establishing a full connection) to discover hosts on the network. ICMP packets are commonly used to verify connectivity between two devices on an IP network, while TCP SYN packets are used to determine if a port is open on a host.
-
-======
-
-3. Sometimes we need Masks !
 Write a bash script that scan a subnetwork to discover live host using ICMP Address Mask scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
+
 Depending on the scanned subnetwork, the output could change.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./3-icmp_address_mask_scan.sh 6.19.100.0/24
+[sudo] password for yosri
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-10 15:15 CDT
+Nmap done: 254 IP address (0 hosts up) scanned in 53.01 seconds
+```
+---
 
-#!/bin/bash
-sudo nmap -sn -PM $1
+#  4. SYN Scan me 
 
-
--PM:
-This option tells Nmap to send ICMP ECHO REQUEST (ping) packets and TCP ACK packets (without establishing a full connection) to discover hosts on the network. ICMP packets are commonly used to verify connectivity between two devices on an IP network, while TCP ACK packets are used to determine whether a port is in listening state on a host.
-
-======
-
-4. SYN Scan me
-mandatory
-Score: 100.00% (Checks completed: 100.00%)
-
+![image](images/4.png)
 
 Write a bash script that scan a subnetwork to discover live host using TCP SYN Ping scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-Your code should scan for those ports22,80,443.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- Your code should scan for those ports22,80,443.
+- Your script should accept a subnetwork as an arguments $1.
+
 Depending on the scanned subnetwork, the output could change.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./4-tcp_syn_ping.sh 6.19.100.0/24
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-21 14:40 CDT
+Nmap scan report for 6.19.100.2
+Host is up (0.12s latency).
+Nmap done: 256 IP addresses (1 host up) scanned in 22.42 seconds
+```
+---
 
-#!/bin/bash
-sudo nmap -sn -PS22,80,443 $1
+# 5. Are your privileged enough to scan me ? 
 
--PS22,80,443:
-This option tells Nmap to send TCP SYN packets to the specified ports (22, 80, and 443) to discover active hosts and determine if those ports are open. These ports are common for services such as SSH (22), HTTP (80), and HTTPS (443).
-
-======
-
-5. Are your privileged enough to scan me ?
 Write a bash script that scan a subnetwork to discover live host using *TCP ACK Ping * scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-Your code should scan for those ports 22,80,443.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- Your code should scan for those ports 22,80,443.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
 
-#!/bin/bash
-sudo nmap -sn -PA22,80,443 $1
+Depending on the scanned subnetwork, the output could change. Unprivileged users have no choice but to complete the 3-way handshake if the port is open.
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./5-tcp_ack_ping.sh 6.19.100.0/24
+[sudo] password for yosri:
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-10 15:15 CDT
+Nmap done: 256 IP addresses (0 hosts up) scanned in 154.50 seconds
+```
+---
 
--PA22,80,443:
-This option tells Nmap to send TCP ACK packets to the specified ports (22, 80, and 443) to discover active hosts and determine if those ports are in listening state. ACK packets are commonly used to check if a port is open and waiting for connections.
+#  6. UDP is our last hope 
 
-======
-
-6. UDP is our last hope
 Write a bash script that scan a subnetwork to discover live host using UDP Ping scan.
 
-You should use nmap.
-Your code should tell nmap not to do a port scan after host discovery.
-Your code should scan for those ports 53,161,162.
-You should run your code as privileged user. root or sudoers.
-Your script should accept a subnetwork as an arguments $1.
+- You should use nmap.
+- Your code should tell nmap not to do a port scan after host discovery.
+- Your code should scan for those ports 53,161,162.
+- You should run your code as privileged user. root or sudoers.
+- Your script should accept a subnetwork as an arguments $1.
 
-#!/bin/bash
-sudo nmap -sn -PU53,161,162 $1
+```
+┌──(yosri)-[~/0x04_nmap_live_hosts_discovery]
+└─🏴 ./6-udp_ping_scan.sh 6.19.100.0/24
+[sudo] password for yosri:
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-21 15:10 CDT
+Nmap scan report for 6.19.100.2
+Host is up (0.13s latency).
+Nmap done: 256 IP addresses (1 host up) scanned in 23.39 seconds
+```
+---
 
--PU53,161,162:
-This option tells Nmap to send UDP packets to the specified ports (53, 161, and 162) to discover active hosts and determine if those ports are in listening state. UDP packets are commonly used for protocols such as DNS (53), SNMP (161), and SNMP Trap (162).
+#  7. Simple Catch, is it mimicked ? 
+
+Time To Ping The Target (cybernetsec0x04)
+
+Catch the flag time is on, here is some tips:
+
+- You should run your scan as privileged user. root or sudoers.
+- The Current Flag is hidden within UDP opened port service VERSION
+- Two hundred, Three hundred but no more. -p200-300
+
