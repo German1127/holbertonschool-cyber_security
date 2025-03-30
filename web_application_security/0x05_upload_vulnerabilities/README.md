@@ -1,4 +1,4 @@
-![image](1.png)
+![image](images/1.png)
 
 #  0. Oops! We forget that endpoint for testing purpose 
 
